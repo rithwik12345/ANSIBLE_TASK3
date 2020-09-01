@@ -1,0 +1,16 @@
+---
+# tasks file for serverforlb
+- name: install httpd
+  package:
+    name: "httpd"
+    state: present
+
+- name: creating webpage
+  copy:
+    content: "This Is  {{ ansible_hostname }}"
+    dest: /var/www/html/index.html
+
+- name: starting httpd service
+  service:
+    name: "httpd"
+    state: started
